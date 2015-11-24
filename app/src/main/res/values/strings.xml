@@ -9,4 +9,16 @@
     <string name="title_activity_survey_user">SurveyUserActivity</string>
     <string name="location_text_view">Location:</string>
     <string name="title_activity_login">LoginActivity</string>
+
+
+    <string-array name="sports_array">
+        <item>Newest Task</item>
+        <item>Older Task</item>
+        <item>Older Task</item>
+        <item>Older Task</item>
+        <item>Older Task</item>
+        <item>Older Task</item>
+        <item>Oldest Task</item>
+    </string-array>
+
 </resources>
