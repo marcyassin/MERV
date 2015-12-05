@@ -20,5 +20,10 @@
         <item>Older Task</item>
         <item>Oldest Task</item>
     </string-array>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="signup_error_message">Incorrect Username or Password</string>
+    <string name="signup_error_title">Oops!</string>
+    <string name="login_error_message">Incorrect Username or Password</string>
+    <string name="login_error_title">Login Error</string>
 
 </resources>
