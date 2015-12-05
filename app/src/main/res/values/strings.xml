@@ -25,5 +25,6 @@
     <string name="signup_error_title">Oops!</string>
     <string name="login_error_message">Incorrect Username or Password</string>
     <string name="login_error_title">Login Error</string>
+    <string name="add_item">Add New Item</string>
 
 </resources>
