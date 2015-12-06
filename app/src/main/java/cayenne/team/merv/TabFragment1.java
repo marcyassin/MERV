@@ -1,5 +1,6 @@
 package cayenne.team.merv;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -31,6 +33,7 @@ public class TabFragment1 extends Fragment {
         final ListView listView = (ListView) getView().findViewById(R.id.listView);
 
         super.onCreate(savedInstanceState);
+
         // Create a new Adapter
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_list_item_1, android.R.id.text1);
