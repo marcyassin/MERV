@@ -10,6 +10,13 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.firebase.client.AuthData;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -28,6 +35,8 @@ public class SignUpActivity extends AppCompatActivity {
         mPassword = (EditText) findViewById(R.id.signUpPasswordEditText);
         mEmail = (EditText) findViewById(R.id.signUpEmailEditText);
         mSignUpButton = (Button) findViewById(R.id.signUpButton);
+
+        Firebase.setAndroidContext(this);
 
         mSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,8 +58,36 @@ public class SignUpActivity extends AppCompatActivity {
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 } else {
-
-                    // code for Signup goes here
+                    Firebase ref = new Firebase("https://crackling-fire-8381.firebaseio.com");
+                    final String finalEmail = email;
+                    final String finalPassword = password;
+                    ref.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
+                        @Override
+                        public void onSuccess(Map<String, Object> result) {
+                            Firebase ref = new Firebase("https://crackling-fire-8381.firebaseio.com");
+                            ref.authWithPassword(finalEmail, finalPassword, new Firebase.AuthResultHandler() {
+                                @Override
+                                public void onAuthenticated(AuthData authData) {
+                                    System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
+                                    Toast toast = Toast.makeText(getApplicationContext(), "Successfully Signed Up", Toast.LENGTH_SHORT);
+                                    toast.show();
+                                    Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+                                }
+                                @Override
+                                public void onAuthenticationError(FirebaseError firebaseError) {
+                                    // there was an error
+                                }
+                            });
+                            System.out.println("Successfully created user account with uid: " + result.get("uid"));
+                        }
+                        @Override
+                        public void onError(FirebaseError firebaseError) {
+                            // there was an error
+                        }
+                    });
                 }
 
             }

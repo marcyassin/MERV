@@ -11,6 +11,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -56,8 +57,9 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     // Login flow
 
-                    setProgressBarIndeterminateVisibility(true);
-                    // Login successful
+//                    setProgressBarIndeterminateVisibility(true);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Successfully Logged In", Toast.LENGTH_SHORT);
+                    toast.show();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
