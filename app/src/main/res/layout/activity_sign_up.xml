@@ -24,10 +24,17 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/signUpPhoneEditText"
+        android:hint="@string/phone"
+        android:inputType="phone"
+        android:layout_below="@+id/signUpEmailEditText"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/signUpPasswordEditText"
         android:hint="Set a password"
         android:inputType="textPassword"
-        android:layout_below="@+id/signUpEmailEditText"/>
+        android:layout_below="@+id/signUpPhoneEditText"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

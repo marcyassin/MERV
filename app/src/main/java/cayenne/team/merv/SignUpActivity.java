@@ -23,6 +23,7 @@ public class SignUpActivity extends AppCompatActivity {
     protected EditText mUsername;
     protected EditText mPassword;
     protected EditText mEmail;
+    protected EditText mPhone;
     protected Button mSignUpButton;
 
     @Override
@@ -34,6 +35,7 @@ public class SignUpActivity extends AppCompatActivity {
         mUsername = (EditText) findViewById(R.id.signUpUsernameEditText);
         mPassword = (EditText) findViewById(R.id.signUpPasswordEditText);
         mEmail = (EditText) findViewById(R.id.signUpEmailEditText);
+        mPhone = (EditText) findViewById(R.id.signUpPhoneEditText);
         mSignUpButton = (Button) findViewById(R.id.signUpButton);
 
         Firebase.setAndroidContext(this);

@@ -27,5 +27,6 @@
     <string name="login_error_title">Login Error</string>
     <string name="add_item">Add New Item</string>
     <string name="action_logout">Logout</string>
+    <string name="phone">Phone Number</string>
 
 </resources>
