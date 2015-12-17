@@ -62,16 +62,16 @@ public class TabFragment1 extends Fragment {
                     public void onCancelled(FirebaseError firebaseError) {
                     }
                 });
-        final EditText text = (EditText) getView().findViewById(R.id.todoText);
-        final Button button = (Button) getView().findViewById(R.id.addButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                new Firebase("https://crackling-fire-8381.firebaseio.com/todoItems")
-                        .push()
-                        .child("text")
-                        .setValue(text.getText().toString());
-            }
-        });
+//        final EditText text = (EditText) getView().findViewById(R.id.todoText);
+//        final Button button = (Button) getView().findViewById(R.id.addButton);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                new Firebase("https://crackling-fire-8381.firebaseio.com/todoItems")
+//                        .push()
+//                        .child("text")
+//                        .setValue(text.getText().toString());
+//            }
+//        });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {

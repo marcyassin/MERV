@@ -59,35 +59,35 @@ public class TabFragment3 extends Fragment {
                     public void onCancelled(FirebaseError firebaseError) {
                     }
                 });
-        final EditText text = (EditText) getView().findViewById(R.id.newsText);
-        final Button button = (Button) getView().findViewById(R.id.addNews);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                new Firebase("https://crackling-fire-8381.firebaseio.com/newsFeed")
-                        .push()
-                        .child("text")
-                        .setValue(text.getText().toString());
-            }
-        });
-        listView3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                new Firebase("https://crackling-fire-8381.firebaseio.com/newsFeed")
-                        .orderByChild("text")
-                        .equalTo((String) listView3.getItemAtPosition(position))
-                        .addListenerForSingleValueEvent(new ValueEventListener() {
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                if (dataSnapshot.hasChildren()) {
-                                    DataSnapshot firstChild = dataSnapshot.getChildren().iterator().next();
-                                    firstChild.getRef().removeValue();
-                                }
-                            }
-
-                            public void onCancelled(FirebaseError firebaseError) {
-                            }
-                        });
-            }
-        });
+//        final EditText text = (EditText) getView().findViewById(R.id.newsText);
+//        final Button button = (Button) getView().findViewById(R.id.addNews);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                new Firebase("https://crackling-fire-8381.firebaseio.com/newsFeed")
+//                        .push()
+//                        .child("text")
+//                        .setValue(text.getText().toString());
+//            }
+//        });
+//        listView3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            public void onItemClick(AdapterView<?> parent, View view,
+//                                    int position, long id) {
+//                new Firebase("https://crackling-fire-8381.firebaseio.com/newsFeed")
+//                        .orderByChild("text")
+//                        .equalTo((String) listView3.getItemAtPosition(position))
+//                        .addListenerForSingleValueEvent(new ValueEventListener() {
+//                            public void onDataChange(DataSnapshot dataSnapshot) {
+//                                if (dataSnapshot.hasChildren()) {
+//                                    DataSnapshot firstChild = dataSnapshot.getChildren().iterator().next();
+//                                    firstChild.getRef().removeValue();
+//                                }
+//                            }
+//
+//                            public void onCancelled(FirebaseError firebaseError) {
+//                            }
+//                        });
+//            }
+//        });
     }
 
 }

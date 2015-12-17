@@ -18,18 +18,17 @@ public class TaskMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(R.layout.activity_task_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarTasks);
         setSupportActionBar(toolbar);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layoutTasks);
         tabLayout.addTab(tabLayout.newTab().setText("Summary"));
         tabLayout.addTab(tabLayout.newTab().setText("Team"));
-        tabLayout.addTab(tabLayout.newTab().setText("Training"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        final PagerAdapter adapter = new PagerAdapter
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pagerTasks);
+        final PagerAdapterTasks adapter = new PagerAdapterTasks
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
