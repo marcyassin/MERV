@@ -6,7 +6,7 @@
               android:orientation="vertical">
 
     <ListView
-        android:id="@+id/listView2"
+        android:id="@+id/listView4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -19,11 +19,11 @@
         android:orientation="vertical"
         android:layout_gravity="bottom">
         <EditText
-            android:id="@+id/jobText"
+            android:id="@+id/trainingText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
         <Button
-            android:id="@+id/addjob"
+            android:id="@+id/addTraining"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/add_item"/>

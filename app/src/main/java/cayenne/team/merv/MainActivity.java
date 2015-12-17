@@ -27,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Tasks"));
-        tabLayout.addTab(tabLayout.newTab().setText("Explore"));
+        tabLayout.addTab(tabLayout.newTab().setText("Job Feed"));
+        tabLayout.addTab(tabLayout.newTab().setText("News Feed"));
+        tabLayout.addTab(tabLayout.newTab().setText("Training"));
         tabLayout.addTab(tabLayout.newTab().setText("Social"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 

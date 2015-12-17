@@ -1,7 +1,4 @@
 package cayenne.team.merv;
-
-
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,16 +16,16 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-public class TabFragment2 extends Fragment {
+public class TabFragment4 extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_tab_fragment2, container, false);
+        return inflater.inflate(R.layout.fragment_tab_fragment4, container, false);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        final ListView listView2 = (ListView) getView().findViewById(R.id.listView2);
+        final ListView listView4 = (ListView) getView().findViewById(R.id.listView4);
 
         super.onCreate(savedInstanceState);
         // Create a new Adapter
@@ -36,12 +33,13 @@ public class TabFragment2 extends Fragment {
                 android.R.layout.simple_list_item_1, android.R.id.text1);
 
         // Assign adapter to ListView
-        listView2.setAdapter(adapter);
+        listView4.setAdapter(adapter);
 
         // Use Firebase to populate the list.
+
         Firebase.setAndroidContext(getActivity());
 
-        new Firebase("https://crackling-fire-8381.firebaseio.com/jobFeed")
+        new Firebase("https://crackling-fire-8381.firebaseio.com/training")
                 .addChildEventListener(new ChildEventListener() {
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                         adapter.add((String) dataSnapshot.child("text").getValue());
@@ -60,22 +58,22 @@ public class TabFragment2 extends Fragment {
                     public void onCancelled(FirebaseError firebaseError) {
                     }
                 });
-        final EditText text = (EditText) getView().findViewById(R.id.jobText);
-        final Button button = (Button) getView().findViewById(R.id.addjob);
+        final EditText text = (EditText) getView().findViewById(R.id.trainingText);
+        final Button button = (Button) getView().findViewById(R.id.addTraining);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                new Firebase("https://crackling-fire-8381.firebaseio.com/jobFeed")
+                new Firebase("https://crackling-fire-8381.firebaseio.com/training")
                         .push()
                         .child("text")
                         .setValue(text.getText().toString());
             }
         });
-        listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView4.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                new Firebase("https://crackling-fire-8381.firebaseio.com/jobFeed")
+                new Firebase("https://crackling-fire-8381.firebaseio.com/training")
                         .orderByChild("text")
-                        .equalTo((String) listView2.getItemAtPosition(position))
+                        .equalTo((String) listView4.getItemAtPosition(position))
                         .addListenerForSingleValueEvent(new ValueEventListener() {
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 if (dataSnapshot.hasChildren()) {
@@ -90,5 +88,4 @@ public class TabFragment2 extends Fragment {
             }
         });
     }
-
 }
