@@ -47,6 +47,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cayenne.team.merv.LoginActivity" />
         </activity>
+        <activity
+            android:name=".TaskMainActivity"
+            android:label="@string/title_activity_task_main"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cayenne.team.merv.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

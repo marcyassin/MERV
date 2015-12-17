@@ -75,21 +75,25 @@ public class TabFragment1 extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                new Firebase("https://crackling-fire-8381.firebaseio.com/todoItems")
-                        .orderByChild("text")
-                        .equalTo((String) listView.getItemAtPosition(position))
-                        .addListenerForSingleValueEvent(new ValueEventListener() {
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                if (dataSnapshot.hasChildren()) {
-                                    DataSnapshot firstChild = dataSnapshot.getChildren().iterator().next();
-                                    firstChild.getRef().removeValue();
-                                }
-                            }
-
-                            public void onCancelled(FirebaseError firebaseError) {
-                            }
-                        });
-
+//                new Firebase("https://crackling-fire-8381.firebaseio.com/todoItems")
+//                        .orderByChild("text")
+//                        .equalTo((String) listView.getItemAtPosition(position))
+//                        .addListenerForSingleValueEvent(new ValueEventListener() {
+//                            public void onDataChange(DataSnapshot dataSnapshot) {
+//                                if (dataSnapshot.hasChildren()) {
+//                                    DataSnapshot firstChild = dataSnapshot.getChildren().iterator().next();
+//                                    firstChild.getRef().removeValue();
+//                                }
+//                            }
+//
+//                            public void onCancelled(FirebaseError firebaseError) {
+//                            }
+//                        });
+//
+//            }
+                Intent intent = new Intent(getActivity(), TaskMainActivity.class);
+                //based on item add info to intent
+                startActivity(intent);
             }
         });
     }
