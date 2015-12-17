@@ -1,5 +1,7 @@
 package cayenne.team.merv;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.os.Bundle;
@@ -33,7 +35,8 @@ public class TabFragment1 extends Fragment {
         super.onCreate(savedInstanceState);
         // Create a new Adapter
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1);
+                android.R.layout.simple_list_item_1, android.R.id.text1;
+                public ItemClicked getItem(int position){return items.get(position)});
 
         // Assign adapter to ListView
         listView.setAdapter(adapter);
@@ -87,7 +90,24 @@ public class TabFragment1 extends Fragment {
                             public void onCancelled(FirebaseError firebaseError) {
                             }
                         });
+
             }
+        });
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+
+            @Override
+            public void onItemClick(AdapterView<?>adapter,View v, int position){
+
+                ItemClicked item = adapter.getItem(position);
+
+                Intent intent = new Intent(Activity.this,destinationActivity.class);
+                //based on item add info to intent
+                startActivity(intent);
+
+            }
+
+
         });
     }
 }

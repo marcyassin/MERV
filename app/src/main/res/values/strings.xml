@@ -28,5 +28,8 @@
     <string name="add_item">Add New Item</string>
     <string name="action_logout">Logout</string>
     <string name="phone">Phone Number</string>
+    <color name="white">#FFFFFF</color>
+    <string name="title_activity_task">TaskActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 
 </resources>
