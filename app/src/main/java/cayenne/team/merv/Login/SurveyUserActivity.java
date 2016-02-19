@@ -1,9 +1,11 @@
-package cayenne.team.merv;
+package cayenne.team.merv.Login;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import cayenne.team.merv.R;
 
 public class SurveyUserActivity extends AppCompatActivity {
 

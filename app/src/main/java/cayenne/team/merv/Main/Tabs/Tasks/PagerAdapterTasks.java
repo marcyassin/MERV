@@ -1,4 +1,4 @@
-package cayenne.team.merv;
+package cayenne.team.merv.Main.Tabs.Tasks;
 
 /**
  * Created by Marc on 11/15/15.
@@ -7,6 +7,12 @@ package cayenne.team.merv;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import cayenne.team.merv.Main.Tabs.Training.TabTraining;
+import cayenne.team.merv.Main.Tabs.Social.TabSocial;
+import cayenne.team.merv.Main.Tabs.Tasks.Tabs.SummaryFragment;
+import cayenne.team.merv.Main.Tabs.Tasks.Tabs.TeamFragment;
+import cayenne.team.merv.Main.Tabs.Tasks.Tabs.TrainingFragment;
 
 
 public class PagerAdapterTasks extends FragmentStatePagerAdapter{
@@ -22,20 +28,15 @@ public class PagerAdapterTasks extends FragmentStatePagerAdapter{
 
         switch (position) {
             case 0:
-                SummaryFragment tab1 = new SummaryFragment();
-                return tab1;
+                return new SummaryFragment();
             case 1:
-                TeamFragment tab2 = new TeamFragment();
-                return tab2;
+                return new TeamFragment();
             case 2:
-                TrainingFragment tab3 = new TrainingFragment();
-                return tab3;
+                return new TrainingFragment();
             case 3:
-                TabFragment4 tab4 = new TabFragment4();
-                return tab4;
+                return new TabTraining();
             case 4:
-                TabFragment5 tab5 = new TabFragment5();
-                return tab5;
+                return new TabSocial();
             default:
                 return null;
         }

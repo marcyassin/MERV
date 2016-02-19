@@ -1,4 +1,4 @@
-package cayenne.team.merv;
+package cayenne.team.merv.Main.Tabs.Tasks.Tabs;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -21,16 +21,18 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-public class TaskTabFragment1 extends Fragment {
+import cayenne.team.merv.R;
+
+public class TrainingFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.task_fragment_tab_fragment1, container, false);
+        return inflater.inflate(R.layout.fragment_training, container, false);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        final ListView listView = (ListView) getView().findViewById(R.id.listView);
+        final ListView listViewTeam = (ListView) getView().findViewById(R.id.listViewTraining);
 
         super.onCreate(savedInstanceState);
         // Create a new Adapter
@@ -38,10 +40,30 @@ public class TaskTabFragment1 extends Fragment {
                 android.R.layout.simple_list_item_1, android.R.id.text1);
 
         // Assign adapter to ListView
-        listView.setAdapter(adapter);
+        listViewTeam.setAdapter(adapter);
 
         // Use Firebase to populate the list.
         Firebase.setAndroidContext(getActivity());
+
+        new Firebase("https://crackling-fire-8381.firebaseio.com/training")
+                .addChildEventListener(new ChildEventListener() {
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        adapter.add((String) dataSnapshot.child("text").getValue());
+                    }
+
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+                        adapter.remove((String) dataSnapshot.child("text").getValue());
+                    }
+
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                    }
+
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                    }
+
+                    public void onCancelled(FirebaseError firebaseError) {
+                    }
+                });
 
     }
 }

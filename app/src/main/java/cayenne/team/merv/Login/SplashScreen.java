@@ -1,4 +1,4 @@
-package cayenne.team.merv;
+package cayenne.team.merv.Login;
 
 /**
  * Created by Timothy on 12/16/2015.
@@ -8,11 +8,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import cayenne.team.merv.R;
 
 public class SplashScreen extends Activity {
 

@@ -31,4 +31,5 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
     compile 'com.github.channguyen:rsv:1.0.1'
     compile 'com.firebase:firebase-client-android:2.3.1'
+    compile 'com.google.android.gms:play-services:7.5.0'
 }

@@ -1,13 +1,11 @@
-package cayenne.team.merv;
+package cayenne.team.merv.Login;
 
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -17,6 +15,9 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
 import java.util.Map;
+
+import cayenne.team.merv.Main.MainActivity;
+import cayenne.team.merv.R;
 
 public class SignUpActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package cayenne.team.merv;
+package cayenne.team.merv.Main.Tabs.News;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,7 +17,9 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-public class TabFragment3 extends Fragment {
+import cayenne.team.merv.R;
+
+public class TabNews extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

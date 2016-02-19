@@ -1,4 +1,4 @@
-package cayenne.team.merv;
+package cayenne.team.merv.Main.Tabs.Training;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,7 +16,9 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-public class TabFragment4 extends Fragment {
+import cayenne.team.merv.R;
+
+public class TabTraining extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
