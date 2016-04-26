@@ -33,4 +33,19 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_task_main">TaskMainActivity</string>
 
+
+    <!-- Questionnaire Strings  -->
+    <string name="age_q">How old are you</string>
+    <string name="are_you_registered_volunteer">You are a: (SELECT ONLY ONE)</string>
+    <string name="areas_that_you_volunteered">In what areas do/did you volunteer? (SELECT ALL THAT PLAY)</string>
+    <string name="motivation_q">ABOUT YOUR MOTIVATION TO VOLUNTEER</string>
+
+
+
+
+
+
+
+
+
 </resources>
