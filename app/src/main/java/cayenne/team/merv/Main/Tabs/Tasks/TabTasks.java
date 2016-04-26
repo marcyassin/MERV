@@ -1,5 +1,6 @@
 package cayenne.team.merv.Main.Tabs.Tasks;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -21,7 +22,8 @@ import cayenne.team.merv.R;
 
 public class TabTasks extends Fragment {
 
-    @Override
+
+        @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_tab_fragment1, container, false);
     }

@@ -3,6 +3,7 @@ package cayenne.team.merv.Main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,9 +13,11 @@ import android.view.MenuItem;
 import com.firebase.client.Firebase;
 
 import cayenne.team.merv.Login.LoginActivity;
+import cayenne.team.merv.Main.Tabs.JobList.TabJobs;
+import cayenne.team.merv.Main.Tabs.Tasks.TabTasks;
 import cayenne.team.merv.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Tasks"));
         tabLayout.addTab(tabLayout.newTab().setText("Job Feed"));
-        tabLayout.addTab(tabLayout.newTab().setText("News Feed"));
-        tabLayout.addTab(tabLayout.newTab().setText("Training"));
-        tabLayout.addTab(tabLayout.newTab().setText("Social"));
+//        tabLayout.addTab(tabLayout.newTab().setText("News Feed"));
+//        tabLayout.addTab(tabLayout.newTab().setText("Training"));
+//        tabLayout.addTab(tabLayout.newTab().setText("Social"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
@@ -100,4 +103,5 @@ public class MainActivity extends AppCompatActivity {
         ref.unauth();
         startActivity(intent);
     }
+
 }

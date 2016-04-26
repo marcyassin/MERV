@@ -31,12 +31,12 @@ public class PagerAdapter extends FragmentStatePagerAdapter{
                 return new TabTasks();
             case 1:
                 return new TabJobs();
-            case 2:
-                return new TabNews();
-            case 3:
-                return new TabTraining();
-            case 4:
-                return new TabSocial();
+//            case 2:
+//                return new TabNews();
+//            case 3:
+//                return new TabTraining();
+//            case 4:
+//                return new TabSocial();
             default:
                 return null;
         }
