@@ -23,7 +23,7 @@ Tasks, Recommender, API, merv
     * TaskDetail: API endpoint for task CRUD
     * Generate: generate and populate the Task Model with randomized test values 
   * **URLS**: /tasks/
-    * create, tasklist, taskdetail/<pk>, /<pk>, rate/<pk>
+    * create, tasklist, taskdetail/\<pk\>, /\<pk\>, rate/\<pk\>
     * <pk> : the primary key of each task
   
 
