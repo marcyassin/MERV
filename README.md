@@ -26,4 +26,11 @@ Tasks, Recommender, API, merv
     * create, tasklist, taskdetail/\<pk\>, /\<pk\>, rate/\<pk\>
     * <pk> : the primary key of each task
   
+**Recommender:** handles user-task ratings, and recommendations
+ * **Models**
+  * Rating
+    * id: Rating ID
+    * task: foreignkey corresponding to a task
+    * user: foreignkey corresponding to a user
+    * score: rating for the given task from the user
 
