@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +16,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.firebase.client.ChildEventListener;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import cayenne.team.merv.Main.Tabs.Tasks.TabTasks;
 import cayenne.team.merv.R;
@@ -33,55 +35,13 @@ public class TabJobs extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        View view = inflater.inflate(R.layout.fragment_tab_fragment2, container, false);
-
-        Button button = (Button) view.findViewById(R.id.btn);
-        button.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                URL url;
-                HttpURLConnection urlConnection = null;
-                try {
-                    url = new URL("http://130.64.149.46:8000/tasks/tasklist/");
-
-                    urlConnection = (HttpURLConnection) url.openConnection();
-                    urlConnection.setRequestProperty("Content-Type", "application/json");
-                    urlConnection.setRequestProperty("Authorization", "Token token=2129e4c3ef5d3d1bd745267aa3d2d696a9ab990c");
-                    urlConnection.setRequestMethod("GET");
-
-                    urlConnection.connect();
-
-                    InputStream in = urlConnection.getInputStream();
-
-                    InputStreamReader isw = new InputStreamReader(in);
-
-                    int data = isw.read();
-                    while (data != -1) {
-                        char current = (char) data;
-                        data = isw.read();
-                        System.out.print(current);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    if (urlConnection != null) {
-                        urlConnection.disconnect();
-                    }
-                }
-            }
-        });
-
-
-
-        return view;
+        return inflater.inflate(R.layout.fragment_tab_fragment2, container, false);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         final ListView listView2 = (ListView) getView().findViewById(R.id.listView2);
 
         super.onCreate(savedInstanceState);
@@ -92,34 +52,59 @@ public class TabJobs extends Fragment {
         // Assign adapter to ListView
         listView2.setAdapter(adapter);
 
+        URL url;
+        HttpURLConnection urlConnection = null;
+        InputStream in = null;
+        try {
+            url = new URL("http://130.64.149.225:8000/tasks/tasklist");
 
-
-        // Use Firebase to populate the list.
-
-
-        new Firebase("https://crackling-fire-8381.firebaseio.com/jobFeed")
-                .addChildEventListener(new ChildEventListener() {
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        adapter.add((String) dataSnapshot.child("text").getValue());
-                    }
-
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
-                        adapter.remove((String) dataSnapshot.child("text").getValue());
-                    }
-
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                    }
-
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                    }
-
-                    public void onCancelled(FirebaseError firebaseError) {
-                    }
-                });
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestProperty("Authorization", "Bearer hQOFR5VuI7ZuYv1XiJYwqqvJGmGlHm");
+            in = urlConnection.getInputStream();
 
 
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (urlConnection != null) {
+                urlConnection.disconnect();
+            }
+        }
 
+
+
+        try{
+            JSONArray tasks = new JSONArray(convertToJSON(in));
+            //Loop the Array
+            for(int i=0;i < tasks.length();i++) {
+                JSONObject obj=new JSONObject(tasks.get(i).toString());
+                System.out.println(obj.getString("id"));
+                adapter.add("ID:" + obj.getString("id"));
+                adapter.notifyDataSetChanged();
+
+            }
+
+        } catch(JSONException e) {
+            Log.e("log_tag", "Error parsing data "+e.toString());
+        }
+    }
+
+    public static String convertToJSON(InputStream in) {
+        //convert response to string
+        String inputStr="";
+        try {
+            BufferedReader streamReader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
+            StringBuilder responseStrBuilder = new StringBuilder();
+
+
+            while ((inputStr = streamReader.readLine()) != null)
+                responseStrBuilder.append(inputStr);
+            return inputStr;
+        } catch(Exception e) {
+            Log.e("log_tag", "Error converting result " + e.toString());
+        }
+        return inputStr;
     }
 
 }
